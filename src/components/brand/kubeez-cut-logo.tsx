@@ -5,10 +5,11 @@ import { cn } from '@/shared/ui/cn';
  * - KubeezCut: app chrome, favicon, in-app KubeezCut branding.
  * - Kubeez: use `KUBEEZ_BRAND_LOGO_URL` only for the control that opens Kubeez media generation.
  */
-export const KUBEEZCUT_LOGO_URL = '/brand/kubeezcut-logo.png';
+const ASSET_BASE = (import.meta.env.BASE_URL || '/')
+export const KUBEEZCUT_LOGO_URL = `${ASSET_BASE}brand/kubeezcut-logo.png`;
 
 /** Kubeez product mark — reserved for the media-library control that opens generate-with-Kubeez. */
-export const KUBEEZ_BRAND_LOGO_URL = '/brand/kubeez-logo.png';
+export const KUBEEZ_BRAND_LOGO_URL = `${ASSET_BASE}brand/kubeez-logo.png`;
 
 interface KubeezCutLogoProps {
   variant?: 'full' | 'icon';

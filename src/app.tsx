@@ -7,7 +7,12 @@ import { InsufficientCreditsModal } from '@/components/kubeez/insufficient-credi
 import { ErrorBoundary } from '@/components/error-boundary';
 import { routeTree } from './routeTree.gen';
 
-const router = createRouter({ routeTree });
+/* TunaTools embed support: when the app is built with a Vite `base`
+   (e.g. /video-editor/), the router must use the same basepath so
+   client-side navigation stays inside the sub-path. Default builds
+   (base '/') keep the previous root behaviour. */
+const basepath = (import.meta.env.BASE_URL || '/').replace(/\/$/, '')
+const router = createRouter({ routeTree, ...(basepath ? { basepath } : {}) });
 
 declare module '@tanstack/react-router' {
   interface Register {
